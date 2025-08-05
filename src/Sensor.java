@@ -18,7 +18,7 @@ public class Sensor {
         return id;
     }
 
-    public void registrarLeituras(List<Double> leituras){
+    public void registrarLeituras(List<Double> leituras) throws LeituraInvalidaException{
         if(leituras.size() != 100) {
             throw new IllegalArgumentException("O total de leituras deve ser 100.");
         }
@@ -35,7 +35,7 @@ public class Sensor {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "id do sensor:" + id;
     }
 }
 

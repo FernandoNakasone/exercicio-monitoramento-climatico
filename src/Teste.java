@@ -16,15 +16,37 @@ public class Teste {
             System.out.println("X");
         }
 
-        Sensor sensor = new Sensor("1");
-        List<Double> lista = new ArrayList<>();
+        List<Sensor> listaSensores = new ArrayList<>();
+        List<List<Double>> dados = new ArrayList<>();
 
-        for(int i=0; i<100; i++){
-           lista.add((double) Math.round(Math.random() * 61));
+        for(int i= 1; i<= 5; i++){
+            listaSensores.add(new Sensor(String.valueOf(i)));
+            dados.add(gerarLista());
         }
 
-        sensor.registrarLeituras(lista);
+        listaSensores.add(new Sensor("6"));
+        dados.add(gerarListaValida());
 
+        SistemaMonitoramento sistema = new SistemaMonitoramento();
+        sistema.processarSensores(listaSensores, dados);
+        sistema.exibirRelatorio();
+
+    }
+
+    private static List<Double> gerarLista(){
+        List<Double> lista = new ArrayList<>();
+        for (int i = 0; i < Math.round(Math.random() * 100); i++) {
+            lista.add((double) Math.round(Math.random()) * 10);
+        }
+        return lista;
+    }
+
+    private static List<Double> gerarListaValida(){
+        List<Double> lista = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            lista.add((double) Math.random() * 10 );
+        }
+        return lista;
     }
 
     private static void validar(double temp){
