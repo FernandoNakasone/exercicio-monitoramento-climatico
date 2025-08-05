@@ -18,10 +18,9 @@ public class Sensor {
         return id;
     }
 
-
     public void registrarLeituras(List<Double> leituras){
         if(leituras.size() != 100) {
-            throw new IllegalArgumentException("O total de leituras deve ser 100");
+            throw new IllegalArgumentException("O total de leituras deve ser 100.");
         }
 
         for(Double temp : leituras){
